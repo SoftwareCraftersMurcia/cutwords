@@ -1,93 +1,110 @@
-# Requisitos
-Es recomendable tener instalado nvm (Node Version Manager).
+# Spanish Syllable Separator
 
-- [nvm para Linux/macOS](https://github.com/nvm-sh/nvm#installing-and-updating)
-- [nvm para Windows](https://github.com/coreybutler/nvm-windows#installation--upgrades)
+This is an exercise to practice TDD focusing on the selection of examples. The nature of the problem adds some difficult to choose the right examples. This happens because several separation rules can be applied to the same word. This can require more than one reason for a test to fail.
 
-# Instalación
-> Si se encuentra cualquier problema durante la instalación revisar la sección de *Solución de problemas* para resolver los problemas mas comunes.
+The goal of the exercise is to help you to develop a sense for identifying good examples for making new tests which can fail for a unique reason.
 
-En la carpeta `typescript` de este proyecto (en la que se encuentra este fichero README.md) ejecutar el siguiente comando para descargar la versión de node correspondiente al proyecto.
-```bash
-nvm install
-# --- o ---
-nvm install $(Get-Content .nvmrc) # <- si trabajas en Windows
+## The Challenge
+
+Imagine that you are working in some text visualization tool that requires hyphenation. To achieve that, you will need and algorithm to separate Spanish words into syllables.
+
+Spanish language has a bunch of rules for separating a word into Syllables. They are described in different ways depending on the source of information. We decided to use the following, adapted from this document by [Instituto Cervantes](https://cvc.cervantes.es/aula/didactired/anteriores/octubre_08/06102008_05.htm)
+
+### Rule 1
+
+A consonant and the following vowel are pronounced in the same syllable, for example:
+
+```
+ma–ra-ca
+ti–je-ra
 ```
 
-Una vez descargada esta versión marcarla como activa en la sesión de consola actual mediante el comando:
-```bash
-nvm use
-# --- o ---
-nvm use $(Get-Content .nvmrc) # <- si trabajas en Windows
+Remember that the letter `h` is not pronounced except when combined with the letter `c` to form `ch`. Keep in mind that `ch`, `ll`, and `rr`, although written as two letters each (hence called "digraphs"), are pronounced as a single sound each, and this is what counts when dividing syllables, for example:
+
+```
+chi-llar
+cho-rro
 ```
 
-Por último hay que descargar las dependencias del proyecto, esto se puede hacer con `npm` o con `yarn` a vuestra elección.
-```bash
-npm install
-# --- o ---
-yarn install
+### Rule 2
+
+When two consonants are found between two vowels, the first generally forms a syllable with the preceding vowel and the second forms a syllable with the following vowel, for example:
+
+```
+cam-po
+sal-to
+har-to
+an-da
 ```
 
-# Scripts
-Todos los scripts pueden lanzarse con `npm` o con `yarn`, si quieres saber mas sobre estos puedes revisar la sección `scripts` del fichero `package.json`.
+### Rule 3
 
-> Recuerda que todos estos comandos deben lanzarse en la carpeta `typescript` de este proyecto.
+When three consonants are found between two vowels, the first two generally form a syllable with the preceding vowel, and the third forms a syllable with the following vowel, for example:
 
-## Lanzar los tests
-```bash
-npm run test
-# --- o ---
-yarn test
+
+```
+ins-ta
+obs-ti-na-do
+su-pers-ti-ción
 ```
 
-## Calcular la cobertura de los tests
-```bash
-npm run coverage
-# --- o ---
-yarn coverage
+### Exceptions to Rules 2 and 3
+
+The following consonant pairs (consonant groups) are normally pronounced as a single syllable: `bl, br, cl, cr, dr, fl, fr, gl, kl, gr, pl, pr, tr`. Examples:
+
+
+```
+ha-blar
+te-cla
+sa-cro
+si-glo
+ma-dre
+de-trás
+a-grio
+hom-bre
+in-flar
+san-gre
+du-pli-ca-do
+com-pren-der
+en-trar
 ```
 
-> Encontrarás el reporte de cobertura generado en el fichero `coverage/lcov-report/index.html`.
+### Rule 4
 
-## Lanzar los tests de forma automática
-```bash
-npm run test:watch
-# --- o ---
-yarn test:watch
+When four consonants are found between two vowels, the first two form a syllable with the preceding vowel, and the last two form a syllable with the following vowel, for example:
+
+```
+cons-truir
+trans–plan-te
+abs-trac-to
+obs-truir
 ```
 
-> Lanzará los tests de forma automática siempre que se modifique el código de los tests o de producción.
+### Rule 5
 
-## Buscar errores de estilo en el código
-```bash
-npm run lint
-# --- o ---
-yarn lint
+When an `i` or a `u` are next to another vowel, they are usually pronounced as a single syllable, for example:
+
+```
+hay 
+fui
+pues
+cual
 ```
 
-## Corregir errores de estilo en el código
-```bash
-npm run lint:fix
-# --- o ---
-yarn lint:fix
+### Rule 6
+
+When two vowels come together, but neither of them is `i` nor `u`, they are usually pronounced in a different syllable, for example: 
+
+```
+a-é-re-o
+O-es-te
+bo-a
+Bil-ba-o
 ```
 
-# Solución de problemas
-## No reconoce el comando `nvm`
-Si acabas de instalar nvm es posible que tengas que reiniciar el terminal para que te detecte el nuevo comando.
+## Variants
 
-## `nvm install`/`nvm use` me pide que le especifique la versión
-Asegúrate de estar dentro de la carpeta `typescript` de este proyecto.
+For starting, we suggest to forgot about tildes and capitalized words.
 
-Si estás en Windows puedes añadir `$(Get-Content .nvmrc)` al final del comando para pasarle como argumento el contenido del fichero `.nvmrc`. [Fuente](https://gist.github.com/danpetitt/e87dabb707079e1bfaf797d0f5f798f2?permalink_comment_id=3778440#gistcomment-3778440).
-
-Si aún con esas no detectase automáticamente la versión, revisar el contenido del fichero `.nvmrc` y escribir `nvm install [version]`/`nvm use [version]` sustituyendo `[version]` por el contenido del fichero en su lugar.
-
-## No reconoce el comando `yarn`
-Se puede instalar `yarn` tan fácil como ejecutar el siguiente comando:
-```bash
-npm install --global yarn
-```
-
-## No encuentra el fichero package.json al ejecutar cualquier comando con `npm` o `yarn`
-Asegúrate de que te encuentras dentro del directorio `typescript` que se encuentra en la raíz de este proyecto.
+# Credits
+Fran Iglesias: https://github.com/franiglesias/cutwords
