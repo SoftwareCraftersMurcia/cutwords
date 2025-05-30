@@ -55,4 +55,11 @@ class MyClassTest extends TestCase
 
         self::assertSame("cam-po", $result);
     }
+
+    public function test_insta(): void
+    {
+        $result = $this->cutter->word("insta");
+
+        self::assertSame("ins-ta", $result);
+    }
 }
