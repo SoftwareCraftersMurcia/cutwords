@@ -69,4 +69,11 @@ class MyClassTest extends TestCase
 
         self::assertSame("obs-ti-na-do", $result);
     }
+
+    public function test_supersticion(): void
+    {
+        $result = $this->cutter->word("supersticion");
+
+        self::assertSame("su-pers-ti-cion", $result);
+    }
 }
