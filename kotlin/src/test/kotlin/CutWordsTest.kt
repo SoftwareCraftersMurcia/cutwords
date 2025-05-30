@@ -15,6 +15,7 @@ class CutWordsTest {
     fun split_words_with_two_syllables() = listOf(
         "hola" to "ho-la",
         "casa" to "ca-sa",
+        "meson" to "me-son",
     ).map { (input, expected) ->
         DynamicTest.dynamicTest("given $input expected $expected") {
             val cutWords = CutWords()
