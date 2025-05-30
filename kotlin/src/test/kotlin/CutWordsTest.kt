@@ -8,13 +8,14 @@ class CutWordsTest {
     @Test
     fun returns_all_word_when_is_a_single_syllable() {
         val cutWords = CutWords()
-        Assertions.assertEquals("sol", cutWords.split("sol"))
+        Assertions.assertEquals("lo", cutWords.split("lo"))
     }
 
     @TestFactory
     fun split_words_with_two_syllables() = listOf(
         "hola" to "ho-la",
         "casa" to "ca-sa",
+        "maraca" to "ma-ra-ca",
         "meson" to "me-son",
         "chilla" to "chi-lla",
     ).map { (input, expected) ->
