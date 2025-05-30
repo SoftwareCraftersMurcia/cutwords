@@ -11,7 +11,18 @@ class CutWords
         $previousChars = "";
         $syllables = [];
 
-        foreach (str_split($word) as $i => $char) {
+        $list = str_split($word);
+        for ($i = 0, $iMax = count($list); $i < $iMax; $i++) {
+            $char = $list[$i];
+
+            if ($this->rule2($word, $i)) {
+                // campo
+                $syllables[] = $previousChars . $char.$list[$i+1];
+                $previousChars = '';
+                $i++;
+                continue;
+            }
+
             if ($this->rule1($word, $i)) {
                 $syllables[] = $previousChars . $char;
                 $previousChars = '';
@@ -30,6 +41,11 @@ class CutWords
         return in_array($char, $vowels);
     }
 
+    private function isConsonant(string $char): bool
+    {
+        return !$this->isVowel($char);
+    }
+
     public function rule1(string $word, int $pos): bool
     {
         $previousChar = $word[$pos - 1];
@@ -38,5 +54,18 @@ class CutWords
         return $previousChar !== "" &&
             !$this->isVowel($previousChar) &&
             $this->isVowel($char);
+    }
+
+    public function rule2(string $word, int $pos): bool
+    {
+        # campo
+        if (strlen($word) < $pos + 4) {
+            return false;
+        }
+
+        return $this->isVowel($word[$pos])
+            && $this->isConsonant($word[$pos + 1])
+            && $this->isConsonant($word[$pos + 2])
+            && $this->isVowel($word[$pos + 3]);
     }
 }
