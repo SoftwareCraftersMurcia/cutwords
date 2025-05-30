@@ -7,20 +7,23 @@ use PHPUnit\Framework\TestCase;
 
 class MyClassTest extends TestCase
 {
+    private CutWords $cutter;
+
+    protected function setUp(): void
+    {
+        $this->cutter = new CutWords();
+    }
+
     public function test_maraca(): void
     {
-        $cutter = new CutWords();
-
-        $result = $cutter->word("maraca");
+        $result = $this->cutter->word("maraca");
 
         self::assertSame("ma-ra-ca", $result);
     }
 
     public function test_tijera(): void
     {
-        $cutter = new CutWords();
-
-        $result = $cutter->word("tijera");
+        $result = $this->cutter->word("tijera");
 
         self::assertSame("ti-je-ra", $result);
     }
