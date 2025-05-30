@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kata;
@@ -10,12 +11,9 @@ class CutWords
         $previousChars = "";
         $syllables = [];
 
-        foreach (str_split($word) as $char) {
-            if ($previousChars !== "" &&
-                !$this->isVowel($previousChars) &&
-                $this->isVowel($char)
-            ) {
-                $syllables[] = $previousChars.$char;
+        foreach (str_split($word) as $i => $char) {
+            if ($this->rule1($word, $i)) {
+                $syllables[] = $previousChars . $char;
                 $previousChars = '';
                 continue;
             }
@@ -30,5 +28,15 @@ class CutWords
         $vowels = ['a', 'e', 'i', 'o', 'u'];
 
         return in_array($char, $vowels);
+    }
+
+    public function rule1(string $word, int $pos): bool
+    {
+        $previousChar = $word[$pos - 1];
+        $char = $word[$pos];
+
+        return $previousChar !== "" &&
+            !$this->isVowel($previousChar) &&
+            $this->isVowel($char);
     }
 }
