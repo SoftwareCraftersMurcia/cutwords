@@ -15,6 +15,13 @@ class CutWords
         for ($i = 0, $iMax = count($list); $i < $iMax; $i++) {
             $char = $list[$i];
 
+            if ($this->rule3($word, $i)) {
+                $syllables[] = $previousChars . $char . $list[$i+1] . $list[$i+2];
+                $previousChars = '';
+                $i+=2;
+                continue;
+            }
+
             if ($this->rule2($word, $i)) {
                 $syllables[] = $previousChars . $char.$list[$i+1];
                 $previousChars = '';
@@ -66,5 +73,18 @@ class CutWords
             && $this->isConsonant($word[$pos + 2])
             && $this->isVowel($word[$pos + 3])
             && $word[$pos + 1] !== $word[$pos + 2];
+    }
+
+    public function rule3(string $word, int $pos): bool
+    {
+        if (strlen($word) < $pos + 5) {
+            return false;
+        }
+
+        return $this->isVowel($word[$pos])
+            && $this->isConsonant($word[$pos + 1])
+            && $this->isConsonant($word[$pos + 2])
+            && $this->isConsonant($word[$pos + 3])
+            && $this->isVowel($word[$pos + 4]);
     }
 }
