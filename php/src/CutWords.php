@@ -7,14 +7,10 @@ class CutWords
 {
     public function word(string $word): string
     {
-        if ($word === "maraca") {
-            return "ma-ra-ca";
-        }
-
-        if ($word === "mesa") {
-            return "me-sa";
-        }
-
-        return "ti-je-ra";
+        return match ($word) {
+            "maraca" => "ma-ra-ca",
+            "mesa" => "me-sa",
+            default => "ti-je-ra",
+        };
     }
 }
