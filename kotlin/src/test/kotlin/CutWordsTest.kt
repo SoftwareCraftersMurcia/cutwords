@@ -6,7 +6,7 @@ import org.junit.jupiter.api.TestFactory
 class CutWordsTest {
 
     @Test
-    fun split_words_with_single_syllable() {
+    fun returns_all_word_when_is_a_single_syllable() {
         val cutWords = CutWords()
         Assertions.assertEquals("sol", cutWords.split("sol"))
     }
