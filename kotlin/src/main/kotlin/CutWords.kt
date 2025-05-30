@@ -6,6 +6,18 @@ class CutWords {
 
     private fun calculate(word: String): String {
         val listOfVowels = listOf<Char>('a', 'e', 'i', 'o', 'u')
+
+
+        var contadorVocales = 0
+        for (letraConcreta in word){
+            if (letraConcreta in listOfVowels){
+                contadorVocales++
+            }
+        }
+        if (contadorVocales == 1){
+            return word
+        }
+
         var result = ""
         for (character in word) {
             result += character
@@ -13,7 +25,10 @@ class CutWords {
                 result += "-"
             }
         }
-        return result.substring(0, result.length - 1);
+        if (result[result.length - 1] == '-') {
+            result = result.substring(0, result.length - 1);
+        }
+        return result
     }
 
 }

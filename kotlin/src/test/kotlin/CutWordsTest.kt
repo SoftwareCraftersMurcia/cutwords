@@ -18,6 +18,8 @@ class CutWordsTest {
         "maraca" to "ma-ra-ca",
         "meson" to "me-son",
         "chilla" to "chi-lla",
+        "sol" to "sol",
+        "chorro" to "cho-rro"
     ).map { (input, expected) ->
         DynamicTest.dynamicTest("given $input expected $expected") {
             val cutWords = CutWords()
