@@ -3,11 +3,12 @@ import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestFactory
 
-class ExampleTest {
+class CutWordsTest {
 
     @Test
     fun change_me_first() {
-        Assertions.assertEquals("Example", "Example")
+        val cutWords = CutWords()
+        Assertions.assertEquals("sol", cutWords.split("sol"))
     }
 
     @TestFactory
