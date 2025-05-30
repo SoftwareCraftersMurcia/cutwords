@@ -11,26 +11,14 @@ class CutWordsTest {
         Assertions.assertEquals("sol", cutWords.split("sol"))
     }
 
-    @Test
-    fun split_words_with_two_syllable() {
-        val cutWords = CutWords()
-        Assertions.assertEquals("ho-la", cutWords.split("hola"))
-    }
-
-    @Test
-    fun split_words_with_two_syllable_casa() {
-        val cutWords = CutWords()
-        Assertions.assertEquals("ca-sa", cutWords.split("casa"))
-    }
-
     @TestFactory
-    fun dynamicTestExample() = listOf(
-        1 to 1,
-        2 to 2,
-        3 to 3
+    fun split_words_with_two_syllables() = listOf(
+        "hola" to "ho-la",
+        "casa" to "ca-sa",
     ).map { (input, expected) ->
         DynamicTest.dynamicTest("given $input expected $expected") {
-            Assertions.assertEquals(expected, input)
+            val cutWords = CutWords()
+            Assertions.assertEquals(expected, cutWords.split(input))
         }
     }
 
