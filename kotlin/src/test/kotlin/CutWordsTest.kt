@@ -11,6 +11,12 @@ class CutWordsTest {
         Assertions.assertEquals("sol", cutWords.split("sol"))
     }
 
+    @Test
+    fun split_words_with_two_syllable() {
+        val cutWords = CutWords()
+        Assertions.assertEquals("ho-la", cutWords.split("hola"))
+    }
+
     @TestFactory
     fun dynamicTestExample() = listOf(
         1 to 1,
@@ -21,5 +27,7 @@ class CutWordsTest {
             Assertions.assertEquals(expected, input)
         }
     }
+
+
 
 }
