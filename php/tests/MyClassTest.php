@@ -41,4 +41,11 @@ class MyClassTest extends TestCase
 
         self::assertSame("chi-lla", $result);
     }
+
+    public function test_chorro(): void
+    {
+        $result = $this->cutter->word("chorro");
+
+        self::assertSame("cho-rro", $result);
+    }
 }
