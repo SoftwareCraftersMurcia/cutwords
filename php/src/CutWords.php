@@ -16,7 +16,6 @@ class CutWords
             $char = $list[$i];
 
             if ($this->rule2($word, $i)) {
-                // campo
                 $syllables[] = $previousChars . $char.$list[$i+1];
                 $previousChars = '';
                 $i++;
@@ -58,7 +57,6 @@ class CutWords
 
     public function rule2(string $word, int $pos): bool
     {
-        # campo
         if (strlen($word) < $pos + 4) {
             return false;
         }
@@ -66,6 +64,7 @@ class CutWords
         return $this->isVowel($word[$pos])
             && $this->isConsonant($word[$pos + 1])
             && $this->isConsonant($word[$pos + 2])
-            && $this->isVowel($word[$pos + 3]);
+            && $this->isVowel($word[$pos + 3])
+            && $word[$pos + 1] !== $word[$pos + 2];
     }
 }

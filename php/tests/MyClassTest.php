@@ -35,19 +35,19 @@ class MyClassTest extends TestCase
         self::assertSame("me-sa", $result);
     }
 
-    // public function test_chilla(): void
-    // {
-    //     $result = $this->cutter->word("chilla");
-    //
-    //     self::assertSame("chi-lla", $result);
-    // }
+    public function test_chilla(): void
+    {
+        $result = $this->cutter->word("chilla");
 
-    // public function test_chorro(): void
-    // {
-    //     $result = $this->cutter->word("chorro");
-    //
-    //     self::assertSame("cho-rro", $result);
-    // }
+        self::assertSame("chi-lla", $result);
+    }
+
+    public function test_chorro(): void
+    {
+        $result = $this->cutter->word("chorro");
+
+        self::assertSame("cho-rro", $result);
+    }
 
     public function test_campo(): void
     {
