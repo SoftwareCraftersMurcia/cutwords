@@ -11,6 +11,10 @@ class CutWords
             return "ma-ra-ca";
         }
 
+        if ($word === "mesa") {
+            return "me-sa";
+        }
+
         return "ti-je-ra";
     }
 }
