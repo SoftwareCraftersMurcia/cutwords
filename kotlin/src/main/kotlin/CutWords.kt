@@ -1,7 +1,7 @@
 class CutWords {
-    fun split(string: String): Any {
-        if (string.length == 4) return string.substring(0,2)+"-"+string.substring(2,4)
-        else return string
+    fun split(word: String): Any {
+        if (word.length == 4) return word.substring(0,2)+"-"+word.substring(2,4)
+        else return word
     }
 
 }
