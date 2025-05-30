@@ -62,4 +62,11 @@ class MyClassTest extends TestCase
 
         self::assertSame("ins-ta", $result);
     }
+
+    public function test_obstinado(): void
+    {
+        $result = $this->cutter->word("obstinado");
+
+        self::assertSame("obs-ti-na-do", $result);
+    }
 }

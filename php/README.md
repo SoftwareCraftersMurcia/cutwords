@@ -85,7 +85,7 @@ obs-truir
 When an `i` or a `u` are next to another vowel, they are usually pronounced as a single syllable, for example:
 
 ```
-hay 
+hay
 fui
 pues
 cual
@@ -93,7 +93,7 @@ cual
 
 ### Rule 6
 
-When two vowels come together, but neither of them is `i` nor `u`, they are usually pronounced in a different syllable, for example: 
+When two vowels come together, but neither of them is `i` nor `u`, they are usually pronounced in a different syllable, for example:
 
 ```
 a-é-re-o
