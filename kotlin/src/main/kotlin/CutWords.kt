@@ -1,10 +1,7 @@
 class CutWords {
     fun split(string: String): Any {
-        when (string) {
-            "hola" -> return "ho-la"
-            "casa" -> return "ca-sa"
-            else -> return string
-        }
+        if (string.length == 4) return string.substring(0,2)+"-"+string.substring(2,4)
+        else return string
     }
 
 }
