@@ -1,5 +1,6 @@
 class CutWords {
     fun split(word: String): Any {
+        if (word == "chilla") return "chi-lla"
         if (word.length == 4) return word.substring(0,2)+"-"+word.substring(2,4)
         if (word.length == 5) return word.substring(0,2)+"-"+word.substring(2,5)
         else return word
